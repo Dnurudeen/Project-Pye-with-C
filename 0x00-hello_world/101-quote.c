@@ -18,6 +18,6 @@ __asm__ ("syscall"
 : "a" (syscall),
 "D" (fd),
 "S" (s),
-"d" (l));	  
+"d" (l));
 return (1);
 }
