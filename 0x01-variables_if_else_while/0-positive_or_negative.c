@@ -2,8 +2,8 @@
 #include <time.h>
 #include <stdio.h>
 /*
- * main - generates random number and displays whether number
- * is positive, zero, or negative
+ * main - print whether the number stored in the variable n is positive
+ * ,zero, or negative..
  * Return: 0
  */
 int main(void)
