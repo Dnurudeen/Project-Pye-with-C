@@ -1,31 +1,26 @@
 #include <stdio.h>
 
 /**
- * main - prints out all possible combos of 3 digits
- * Return: 0
+ *main - prints out all possible combos of 3 digits
+ *Return: Always 0 (Success)
  */
 
 int main(void)
 {
-int i, j, k;
-for (i = 48; i < 58; i++)
+int one;
+int ten;
+int hundred;
+
+for (hundred = '0'; hundred <= '9'; hundred++) /*hundreds place*/
 {
-for (j = i; j < 58; j++)
+for (ten = (hundred + 1); ten <= '9'; ten++) /*tens=100s+1*/
 {
-for (k = j; k < 58; k++)
+for (one = (ten + 1); one <= '9'; one++) /*ones*/
 {
-if (i == j || j == k || i == k)
-{
-continue;
-}
-putchar(i);
-putchar(j);
-putchar(k);
-if (i == 55 && j == 56 && k == 57)
-{
-break;
-}
-else
+putchar(hundred);
+putchar(ten);
+putchar(one);
+if (hundred != '7' || ten != '8' || one != '9')
 {
 putchar(',');
 putchar(' ');
@@ -34,5 +29,5 @@ putchar(' ');
 }
 }
 putchar('\n');
+
 return (0);
-}
