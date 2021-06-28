@@ -1,5 +1,5 @@
 #include "holberton.h"
-#include <stdio.h>
+
 /**
  *mapint - maps a character to its integer form
  *@a: character to be mapped
@@ -8,22 +8,9 @@
 
 int mapint(char a)
 {
-	/*
-	int i = 0;
-	char ic;
-
-	if (a >= '0' && a <= '9')
-	{
-		for (ic = '0'; ic <= '9'; ic++, i++)
-		{
-			if (a == ic)
-			{
-				return (i);
-			}
-		}
-	}
-*/
-	return ((int)a - 48);
+	if (a >= 48 && a <= 57)
+		return ((int)a - 48);
+	return (0);
 }
 /**
  * isDigit - returns true if i is a number
@@ -42,7 +29,7 @@ int isDigit(char i)
  */
 int _atoi(char *s)
 {
-	int num = 0, sign = 1, started = 0;/*1 for true and 0 for false*/
+	unsigned int num = 0, sign = 1, started = 0;
 
 	while (*s)
 	{
@@ -54,9 +41,9 @@ int _atoi(char *s)
 		if (isDigit(*s))
 		{
 			started = 1;
-			num =  num * 10 + mapint(*s);
-		}
-		s++;
-	}
-	return (sign * num);
+num =  num * 10 + mapint(*s);
+}
+s++;
+}
+return (sign * num);
 }
