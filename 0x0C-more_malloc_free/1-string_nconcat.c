@@ -1,47 +1,56 @@
+#include <stdlib.h>
 #include "holberton.h"
 
 /**
- * string_nconcat - concatenates two strings
- * @s1: destination string
- * @s2: source string
- * @n: number of bytes from s2 to be copied
- * Return: concatenated string
+ * _strlen - calculate and return string length
+ * @string: string
+ * Return: string length
  */
-char *string_nconcat(char *s1, char *s2, unsigned int n)
-{
-	unsigned int i, j, size, len1, len2;
-	char *ptr;
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
-	len1 = _strlen(s1);
-	len2 = _strlen(s2);
-	if (n > len2)
-		n = len2;
-	size = len1 + n;
-	ptr = malloc(sizeof(char) * size + 1);
-	if (!ptr)
-		return (NULL);
-	for (i = 0; i < len1; i++)
-		ptr[i] = s1[i];
-	for (j = 0; j < n; j++, i++)
-		ptr[i] = s2[j];
-	ptr[i] = 0;
-	return (ptr);
+int _strlen(char *string)
+{
+	int i;
+
+	for (i = 0; string[i] != '\0'; i++)
+		;
+	return (i);
 }
 
 /**
- * _strlen - returns the length of a string
- * @s: string s
- * Return: length of string
+ * string_nconcat - concatenate s1 and n bytes of s2; return ptr to string
+ * @s1: string 1
+ * @s2: string 2
+ * @n: n bytes to concat from string 2
+ * Return: pointer to concatenated string
  */
-int _strlen(char *s)
-{
-	char *p = s;
 
-	while (*s)
-		s++;
-	return (s - p);
+char *string_nconcat(char *s1, char *s2, unsigned int n)
+{
+	char *ptr;
+	int num, len, i, j;
+
+	num = n;
+
+	if (s1 == NULL) /* account for NULL strings */
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
+	if (num < 0) /* account for negative n bytes */
+		return (NULL);
+	if (num >= _strlen(s2)) /* account for n too big */
+		num = _strlen(s2);
+
+	len = _strlen(s1) + num + 1; /* +1 to account for null pointer */
+
+	ptr = malloc(sizeof(*ptr) * len); /* malloc and check for error */
+	if (ptr == NULL)
+		return (NULL);
+
+	for (i = 0; s1[i] != '\0'; i++) /* concat */
+		ptr[i] = s1[i];
+	for (j = 0; j < num; j++)
+		ptr[i + j] = s2[j];
+	ptr[i + j] = '\0';
+
+	return (ptr);
 }
