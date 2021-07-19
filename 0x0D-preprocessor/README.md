@@ -1,2 +1,2 @@
-# 0x0D. C - Preprocessor
-C practice with preprocessors
+Project 0x0D. C - Preprocessor
+Preprocessors practice using C Language
